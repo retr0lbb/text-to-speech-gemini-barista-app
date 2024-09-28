@@ -26,11 +26,14 @@ export const createAudioFileFromText = async (text: string): Promise<string> => 
                 text,
             });
 
-            const filename = path.join(audioDir, `${UUID()}.mp3`);
+            const fileUUIDName = UUID()
+
+            const filename = path.join(audioDir, `${fileUUIDName}.mp3`);
             const fileStream = createWriteStream(filename);
 
             audio.pipe(fileStream);
-            fileStream.on("finish", () => resolve(filename));
+
+            fileStream.on("finish", () => resolve(fileUUIDName));
             fileStream.on("error", reject);
         } catch (error) {
             reject(error);

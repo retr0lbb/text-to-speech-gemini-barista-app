@@ -11,10 +11,10 @@ export async function POST(request: Request) {
         const jsonBody = await request.json();
         const { text } = bodySchema.parse(jsonBody);
 
-        const audioPath = await createAudioFileFromText(text);
+        const audioName = await createAudioFileFromText(text);
 
         return NextResponse.json({
-            audio_path: audioPath,
+            audioName,
         });
     } catch (error) {
         return NextResponse.json(
