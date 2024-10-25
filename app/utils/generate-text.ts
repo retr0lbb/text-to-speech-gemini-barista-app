@@ -1,5 +1,4 @@
 import { GenerateContentResult, GoogleGenerativeAI } from "@google/generative-ai"
-import {prisma} from '@/app/utils/prima-client'
 
 
 const chatKey = "AIzaSyDhTbkMozvAGqFLQ2RPpB8dC3xQ7orDQa8"
@@ -27,6 +26,5 @@ const initialChat = model.startChat({
 })
 
 export async function getGeneratedText(text: string): Promise<GenerateContentResult>{
-
     return await initialChat.sendMessage(text)
 }
