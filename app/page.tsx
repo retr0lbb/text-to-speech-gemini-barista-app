@@ -1,10 +1,13 @@
 "use client";
 import { FormEvent, useState, useTransition } from "react";
 import { Message, MessageProps } from "./components/message";
-import { SendHorizonal } from "lucide-react";
+import { SendHorizonal, CameraOff, Paperclip } from "lucide-react";
 import { getGeneratedText } from "@/app/utils/generate-text";
 import axios from "axios";
 import { DropDownMemesSigularity } from "./components/selector-drop-down";
+import { ThreeDotsLoader } from "./components/tree-dots-loading-message";
+import Image from "next/image";
+import Barman from "@/app/static/barman.png"
 
 
 export default function Home() {
@@ -89,25 +92,48 @@ export default function Home() {
   }
 
   return (
-    <section className="w-full h-screen bg-teal-50 flex items-center justify-center overflow-hidden">
-      <main className="border border-black rounded-lg p-5 min-w-[450px] flex flex-col items-center">
-        <div className="w-full flex flex-1 flex-col gap-1 max-h-[500px] overflow-y-auto">
+    <section className="w-full h-screen bg-amber-50 flex justify-center overflow-hidden">
+      <main className="w-full flex flex-col gap-4 items-center">
+        <div className="w-full bg-amber-500 min-h-[90px] flex items-center justify-center py-2 relative">
+          <h1 className="text-4xl font-bold">logo</h1>
+          <div className="size-10 absolute left-10 flex flex-col items-center justify-center gap-2 cursor-pointer">
+            <div className="w-full h-1 bg-orange-950 rounded-xl" />
+            <div className="w-full h-1 bg-orange-950 rounded-xl" />
+            <div className="w-full h-1 bg-orange-950 rounded-xl" />
+          </div>
+        </div>
+
+        <div>
+          <Image className="max-w-60 h-auto" src={Barman} alt="barman drawing" />
+        </div>
+        <div className="w-full flex flex-1 flex-col gap-1 overflow-y-scroll px-10">
           {messages.map((item) => {
             return <Message content={item.content} key={item.audioId} audioId={item.audioId} isFromYou={item.isFromYou} />
           })}
+          {
+            isPending? <ThreeDotsLoader isFromYou={false} /> : ""
+          }
         </div>
 
-        {isOutOfTokens=== true? (
-          <form onSubmit={getTrivialMessagesInDatabase} className="flex w-full items-center justify-center gap-4 mt-5">
+        {!isOutOfTokens=== true? (
+          <form onSubmit={getTrivialMessagesInDatabase} className="flex w-full items-center justify-center gap-4 pb-5 px-4">
+            <div className="flex items-center gap-4 text-amber-800">
+              <CameraOff />
+              <Paperclip />
+            </div>
             <DropDownMemesSigularity onChange={e => setQuery(e.target.value)}/>
-            <button disabled={isPending} className="p-2 bg-slate-600 hover:bg-slate-800 text-white rounded-lg flex items-center justify-center disabled:bg-slate-400">
+            <button disabled={isPending} className="p-2 bg-amber-800 hover:bg-amber-900 text-white rounded-lg flex items-center justify-center disabled:bg-amber-600 disabled:opacity-40">
               <SendHorizonal />
             </button>
           </form>
         ): (
-        <form onSubmit={sendMessage} className="flex w-full items-center justify-center gap-4 mt-5">
-           <input value={query} onChange={(e) => setQuery(e.target.value)} type="text" className="flex flex-1 py-2 px-4 bg-transparent border rounded-full" />
-           <button disabled={isPending} className="p-2 bg-slate-600 hover:bg-slate-800 text-white rounded-lg flex items-center justify-center disabled:bg-slate-400">
+        <form onSubmit={sendMessage} className="flex w-full items-center justify-center gap-4 pb-5 px-4">
+          <div className="flex items-center gap-4 text-amber-800">
+            <CameraOff />
+            <Paperclip />
+          </div>
+           <input value={query} onChange={(e) => setQuery(e.target.value)} type="text" className="flex flex-1 py-2 px-4 bg-transparent border border-amber-800 focus:border-amber-950 rounded-full" />
+          <button disabled={isPending} className="p-2 bg-amber-800 hover:bg-amber-900 text-white rounded-lg flex items-center justify-center disabled:bg-amber-600 disabled:opacity-40">
             <SendHorizonal />
           </button>
         </form>

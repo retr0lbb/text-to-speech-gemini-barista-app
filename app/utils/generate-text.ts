@@ -1,7 +1,7 @@
 import { GenerateContentResult, GoogleGenerativeAI } from "@google/generative-ai"
 
 
-const chatKey = "AIzaSyDhTbkMozvAGqFLQ2RPpB8dC3xQ7orDQa8";
+const chatKey =`${process.env.NEXT_PUBLIC_GOOGLE_API?.trim()}`
 if(!chatKey){
     throw new Error("No key found for google")
 }
@@ -13,7 +13,6 @@ const model = genIa.getGenerativeModel({
         temperature: 1.5
     }
 })
-
 
 const initialChat = model.startChat({
     history: [

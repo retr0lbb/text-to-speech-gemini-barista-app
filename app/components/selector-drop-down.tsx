@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 
-
 interface DropDownMemesSigularityProps extends React.ComponentProps<"select"> {}
 interface optionsType{
     prompt: string
@@ -26,7 +25,7 @@ export function DropDownMemesSigularity(props: DropDownMemesSigularityProps){
         getPropts()
     }, [])
     return(
-        <select name="pre-defined" id="selector-pre" className="flex flex-1 py-2 px-4 bg-transparent border rounded-full" {...props}>
+        <select name="pre-defined" id="selector-pre" className="flex flex-1 py-2 px-4 bg-transparent border border-amber-800 rounded-full max-w-60" {...props}>
             <option value="">Selecione uma resposta pre pronta</option>
             {validOptions.length > 0? (
                 validOptions.map((item) => {
