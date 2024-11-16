@@ -115,7 +115,7 @@ export default function Home() {
           }
         </div>
 
-        {!isOutOfTokens=== true? (
+        {isOutOfTokens=== true? (
           <form onSubmit={getTrivialMessagesInDatabase} className="flex w-full items-center justify-center gap-4 pb-5 px-4">
             <div className="flex items-center gap-4 text-amber-800">
               <CameraOff />
