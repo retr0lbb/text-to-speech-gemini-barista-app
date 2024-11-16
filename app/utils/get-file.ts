@@ -2,12 +2,11 @@ import { ElevenLabsClient } from "elevenlabs";
 import { createWriteStream, mkdirSync } from "fs";
 import { v4 as UUID } from "uuid";
 import path from "path";
+import { env } from "../utils/env";
 
-const ELEVENLABSKEY = process.env.ELEVEN_LABS_KEY
 
-if(!ELEVENLABSKEY){
-    throw new Error("Missing api key")
-}
+
+const ELEVENLABSKEY = env.ELEVEN_LABS_KEY
 
 const client = new ElevenLabsClient({
     apiKey: ELEVENLABSKEY,

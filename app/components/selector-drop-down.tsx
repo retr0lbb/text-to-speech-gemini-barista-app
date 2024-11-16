@@ -27,7 +27,7 @@ export function DropDownMemesSigularity(props: DropDownMemesSigularityProps){
     }, [])
     return(
         <select name="pre-defined" id="selector-pre" className="flex flex-1 py-2 px-4 bg-transparent border rounded-full" {...props}>
-            <option value=""></option>
+            <option value="">Selecione uma resposta pre pronta</option>
             {validOptions.length > 0? (
                 validOptions.map((item) => {
                     return(
