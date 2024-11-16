@@ -2,11 +2,11 @@ import { ElevenLabsClient } from "elevenlabs";
 import { createWriteStream, mkdirSync } from "fs";
 import { v4 as UUID } from "uuid";
 import path from "path";
-import { env } from "../utils/env";
 
 
 
-const ELEVENLABSKEY = env.ELEVEN_LABS_KEY
+const ELEVENLABSKEY = process.env.NEXT_PUBLIC_ELEVEN_LABS_KEY
+
 
 const client = new ElevenLabsClient({
     apiKey: ELEVENLABSKEY,

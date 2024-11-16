@@ -1,7 +1,7 @@
 import { GenerateContentResult, GoogleGenerativeAI } from "@google/generative-ai"
-import { env } from "./env"
 
-const chatKey = env.CHATBOT_KEY;
+
+const chatKey = "AIzaSyDhTbkMozvAGqFLQ2RPpB8dC3xQ7orDQa8";
 if(!chatKey){
     throw new Error("No key found for google")
 }
