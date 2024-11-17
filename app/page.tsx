@@ -103,7 +103,7 @@ export default function Home() {
             <div className="w-full h-1 bg-orange-950 rounded-xl" />
           </div>
         </div>
-        <div className="w-full flex flex-1 flex-col gap-1 overflow-y-scroll px-10">
+        <div className="w-full md:max-w-[600px] flex flex-1 flex-col gap-1 overflow-y-scroll px-10">
           {messages.map((item) => {
             return <Message content={item.content} key={item.audioId} audioId={item.audioId} isFromYou={item.isFromYou} />
           })}
@@ -113,7 +113,7 @@ export default function Home() {
         </div>
 
         {isOutOfTokens=== true? (
-          <form onSubmit={getTrivialMessagesInDatabase} className="flex w-full items-center justify-center gap-4 pb-5 px-4">
+          <form onSubmit={getTrivialMessagesInDatabase} className="flex w-full md:max-w-[600px] items-center justify-center gap-4 pb-5 px-4">
             <div className="flex items-center gap-4 text-amber-800">
               <CameraOff />
               <Paperclip />
@@ -124,7 +124,7 @@ export default function Home() {
             </button>
           </form>
         ): (
-        <form onSubmit={sendMessage} className="flex w-full items-center justify-center gap-4 pb-5 px-4">
+        <form onSubmit={sendMessage} className="flex w-full md:max-w-[600px] items-center justify-center gap-4 pb-5 px-4">
           <div className="flex items-center gap-4 text-amber-800">
             <CameraOff />
             <Paperclip />
