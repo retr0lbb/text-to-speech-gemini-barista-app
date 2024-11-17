@@ -8,6 +8,7 @@ import { DropDownMemesSigularity } from "./components/selector-drop-down";
 import { ThreeDotsLoader } from "./components/tree-dots-loading-message";
 import Image from "next/image";
 import Barman from "@/app/static/barman.png"
+import LogoBa from "@/app/static/LOGO-IABOA-SVG.svg"
 
 
 export default function Home() {
@@ -94,17 +95,13 @@ export default function Home() {
   return (
     <section className="w-full h-screen bg-amber-50 flex justify-center overflow-hidden">
       <main className="w-full flex flex-col gap-4 items-center">
-        <div className="w-full bg-amber-500 min-h-[90px] flex items-center justify-center py-2 relative">
-          <h1 className="text-4xl font-bold">logo</h1>
+        <div className="w-full bg-femboyOrange min-h-[90px] flex items-center justify-center py-2 relative">
+          <h1 className="text-4xl font-bold"><Image className="size-16" src={LogoBa} alt="é a logo do iaboa" /></h1>
           <div className="size-10 absolute left-10 flex flex-col items-center justify-center gap-2 cursor-pointer">
             <div className="w-full h-1 bg-orange-950 rounded-xl" />
             <div className="w-full h-1 bg-orange-950 rounded-xl" />
             <div className="w-full h-1 bg-orange-950 rounded-xl" />
           </div>
-        </div>
-
-        <div>
-          <Image className="max-w-60 h-auto" src={Barman} alt="barman drawing" />
         </div>
         <div className="w-full flex flex-1 flex-col gap-1 overflow-y-scroll px-10">
           {messages.map((item) => {
