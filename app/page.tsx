@@ -7,7 +7,6 @@ import axios from "axios";
 import { DropDownMemesSigularity } from "./components/selector-drop-down";
 import { ThreeDotsLoader } from "./components/tree-dots-loading-message";
 import Image from "next/image";
-import Barman from "@/app/static/barman.png"
 import LogoBa from "@/app/static/LOGO-IABOA-SVG.svg"
 import { ToggleMenu } from "./components/toggle-mode-menu";
 

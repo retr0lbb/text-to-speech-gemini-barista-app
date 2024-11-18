@@ -8,6 +8,8 @@ export async function GET() {
                 prompt: true
             }
         })
+
+        await prisma.$disconnect()
         return NextResponse.json(messagePropts)
     } catch (error) {
         return NextResponse.json(
