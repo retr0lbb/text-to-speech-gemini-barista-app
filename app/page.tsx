@@ -9,11 +9,13 @@ import { ThreeDotsLoader } from "./components/tree-dots-loading-message";
 import Image from "next/image";
 import Barman from "@/app/static/barman.png"
 import LogoBa from "@/app/static/LOGO-IABOA-SVG.svg"
+import { ToggleMenu } from "./components/toggle-mode-menu";
 
 
 export default function Home() {
   const [messages, setMessages] = useState<MessageProps[]>([{content: "Olá tudo bem? Eu sou o Barista e sou seu Barman pessoal dessa noite alguma pergunta sobre nosso estabelecimento", audioId: "0b2b7c03-e196-41f1-9b98-c8847b9f2f0b", isFromYou: false}])
   const [query, setQuery] = useState("")
+  const [isMenuVisible, setIsMenuVisible] = useState(false)
 
   const [isOutOfTokens, setIsOutOfTokens] = useState(false)
   const [isPending, setIsPending] = useState(false)
@@ -97,12 +99,14 @@ export default function Home() {
       <main className="w-full flex flex-col gap-4 items-center">
         <div className="w-full bg-femboyOrange min-h-[90px] flex items-center justify-center py-2 relative">
           <h1 className="text-4xl font-bold"><Image className="size-16" src={LogoBa} alt="é a logo do iaboa" /></h1>
-          <div className="size-10 absolute left-10 flex flex-col items-center justify-center gap-2 cursor-pointer">
+          <div className="size-10 absolute left-10 flex flex-col items-center justify-center gap-2 cursor-pointer" onClick={() => setIsMenuVisible(prev => !prev)}>
             <div className="w-full h-1 bg-orange-950 rounded-xl" />
             <div className="w-full h-1 bg-orange-950 rounded-xl" />
             <div className="w-full h-1 bg-orange-950 rounded-xl" />
           </div>
         </div>
+
+        <ToggleMenu isVisible={isMenuVisible} onButtonClick={() => setIsOutOfTokens(prev => !prev)} />
         <div className="w-full md:max-w-[600px] flex flex-1 flex-col gap-1 overflow-y-scroll px-10">
           {messages.map((item) => {
             return <Message content={item.content} key={item.audioId} audioId={item.audioId} isFromYou={item.isFromYou} />

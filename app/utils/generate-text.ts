@@ -6,8 +6,9 @@ if(!chatKey){
     throw new Error("No key found for google")
 }
 const genIa = new GoogleGenerativeAI(chatKey)
+
 const model = genIa.getGenerativeModel({
-    model: "gemini-1.5-flash",
+    model: "gemini-1.5-flash-8b",
     generationConfig: {
         maxOutputTokens: 100,
         temperature: 1.5
