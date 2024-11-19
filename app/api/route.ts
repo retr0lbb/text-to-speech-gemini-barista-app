@@ -19,16 +19,18 @@ export async function POST(request: Request) {
             data: {
                 messageAudioPath: audioName,
                 messageContent: text,
-                prompt: prompt
+                prompt: prompt,
+                
             }
         })
+        prisma.$disconnect()
 
         return NextResponse.json({
             audioName, result
         });
     } catch (error) {
         return NextResponse.json(
-            { status: 400 , error} 
+            { status: 400 } 
         );
     }
 }
