@@ -30,6 +30,7 @@ export async function POST(request: Request) {
             // audioName, result
         });
     } catch (error) {
+        console.log(error)
         return NextResponse.json(
             { status: 400, error } 
         );

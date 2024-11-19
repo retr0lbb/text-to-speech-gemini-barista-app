@@ -11,6 +11,8 @@ export async function GET() {
 
         return NextResponse.json(messagePropts)
     } catch (error) {
+
+        console.log(error)
         return NextResponse.json(
             { status: 400, error} 
         );
