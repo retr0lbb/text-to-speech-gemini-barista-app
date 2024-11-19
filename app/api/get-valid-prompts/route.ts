@@ -1,18 +1,13 @@
 import { NextResponse } from "next/server";
-import {prisma} from "@/app/api/utils/prima-client"
+import { prisma } from "@/app/api/utils/prima-client"
 
 export async function GET() {
     try {
-        const messagePropts = await prisma.message.findMany({
-            select: {
-                prompt: true
-            }
-        })
+        const messagePropts = await prisma.message.findMany()
 
         return NextResponse.json(messagePropts)
     } catch (error) {
 
-        console.log(error)
         return NextResponse.json(
             { status: 400, error} 
         );
