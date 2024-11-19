@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 import { Volume2, Pause } from "lucide-react";
-import { supabase } from "@/app/api/utils/supabase-client";
+import { supabase } from "@/app/utils/supabase-client";
 
 interface AudiProps {
   audioID: string;

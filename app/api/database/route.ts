@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import {prisma} from "@/app/api/utils/prima-client"
+import {prisma} from "@/app/utils/prima-client"
 import { z } from "zod";
 
 const bodySchema = z.object({

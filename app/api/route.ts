@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { createAudioFileFromText } from "@/app/api/utils/get-file";
+import { createAudioFileFromText } from "@/app/utils/get-file";
 import { z } from "zod";
-import { prisma } from "./utils/prima-client";
+import { prisma } from "../utils/prima-client";
 
 const bodySchema = z.object({
     text: z.string(),

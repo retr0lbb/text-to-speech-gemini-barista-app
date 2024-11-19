@@ -2,7 +2,7 @@
 import { FormEvent, useState, useTransition } from "react";
 import { Message, MessageProps } from "./components/message";
 import { SendHorizonal, CameraOff, Paperclip } from "lucide-react";
-import { getGeneratedText } from "@/app/api/utils/generate-text";
+import { getGeneratedText } from "@/app/utils/generate-text";
 import axios from "axios";
 import { DropDownMemesSigularity } from "./components/selector-drop-down";
 import { ThreeDotsLoader } from "./components/tree-dots-loading-message";
