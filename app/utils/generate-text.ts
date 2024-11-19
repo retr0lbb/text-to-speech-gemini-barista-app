@@ -8,7 +8,7 @@ if(!chatKey){
 const genIa = new GoogleGenerativeAI(chatKey)
 
 const model = genIa.getGenerativeModel({
-    model: "gemini-1.5-pro",
+    model: "gemini-1.5-flash",
     generationConfig: {
         maxOutputTokens: 100,
         temperature: 1.5
