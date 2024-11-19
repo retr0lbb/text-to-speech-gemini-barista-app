@@ -22,7 +22,6 @@ export async function POST(request: Request) {
                 prompt: prompt
             }
         })
-        prisma.$disconnect()
 
         return NextResponse.json({
             audioName, result
