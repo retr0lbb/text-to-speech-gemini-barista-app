@@ -28,7 +28,7 @@ export async function POST(request: Request) {
         });
     } catch (error) {
         return NextResponse.json(
-            { status: 400 } 
+            { status: 400 , error} 
         );
     }
 }
