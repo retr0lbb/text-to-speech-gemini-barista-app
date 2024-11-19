@@ -11,9 +11,9 @@ import LogoBa from "@/app/static/LOGO-IABOA-SVG.svg"
 import { ToggleMenu } from "./components/toggle-mode-menu";
 
 
-// logger {content: "Olá tudo bem? Eu sou o Barista e sou seu Barman pessoal dessa noite alguma pergunta sobre nosso estabelecimento", audioId: "0b2b7c03-e196-41f1-9b98-c8847b9f2f0b", isFromYou: false}
+// logger 
 export default function Home() {
-  const [messages, setMessages] = useState<MessageProps[]>([])
+  const [messages, setMessages] = useState<MessageProps[]>([{content: "Olá tudo bem? Eu sou o Barista e sou seu Barman pessoal dessa noite alguma pergunta sobre bares em geral?", audioId: "bb31b31f-1983-43ed-950c-cc4d274f4674", isFromYou: false}])
   const [query, setQuery] = useState("")
   const [isMenuVisible, setIsMenuVisible] = useState(false)
 
