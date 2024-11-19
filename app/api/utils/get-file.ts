@@ -1,15 +1,11 @@
-import { ElevenLabsClient } from "elevenlabs";
-import { createWriteStream, mkdirSync } from "fs";
-import { v4 as UUID, v4 } from "uuid";
+import { v4 } from "uuid";
 import { createClient } from "@supabase/supabase-js";
+import { supabase } from "./supabase-client"
 import axios from "axios";
-import path from "path";
-import fs from "fs"
 
 
 
 const ELEVENLABSKEY = process.env.NEXT_PUBLIC_ELEVEN_LABS_KEY
-const supabase = createClient("https://rtohlrqipxvggrzokwxp.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0b2hscnFpcHh2Z2dyem9rd3hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5NzI3NjAsImV4cCI6MjA0NzU0ODc2MH0.SW6ovr8G9BGOagUwUmHBuTsr53KEdcDg6Ou2E3GttW0")
 
 export const createAudioFileFromText = async (text: string) => {
     try {
@@ -28,7 +24,7 @@ export const createAudioFileFromText = async (text: string) => {
         }
     )
 
-    const filename = `${v4()}.mp3`
+    const filename = `${v4()}`
 
     const {error} = await supabase.storage.from("image_bucket").upload(
         filename,
@@ -46,11 +42,14 @@ export const createAudioFileFromText = async (text: string) => {
         throw new Error(`Erro ao enviar áudio para o Supabase: ${error.message}`);
     }
 
-    console.log(`Áudio enviado para o Supabase como: ${filename}`);
-
+    return filename 
 
     } catch (error) {
         throw error
     }
 };
 
+
+
+//my app route https://rtohlrqipxvggrzokwxp.supabase.co/storage/v1/object/public/image_bucket/5c1e087e-0ee5-4182-885d-d97344b64919.mp3
+// other route https://rtohlrqipxvggrzokwxp.supabase.co/storage/v1/object/public/image_bucket/5c1e087e-0ee5-4182-885d-d97344b64919

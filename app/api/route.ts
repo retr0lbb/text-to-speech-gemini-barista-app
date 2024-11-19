@@ -13,21 +13,19 @@ export async function POST(request: Request) {
         const jsonBody = await request.json();
         const { text, prompt } = bodySchema.parse(jsonBody);
 
-        await createAudioFileFromText(text);
+        const audioName = await createAudioFileFromText(text);
 
-        // const result = await prisma.message.create({
-        //     data: {
-        //         messageAudioPath: audioName,
-        //         messageContent: text,
-        //         prompt: prompt,
-                
-        //     }
-        // })
-        // prisma.$disconnect()
+        const result = await prisma.message.create({
+            data: {
+             messageAudioPath: audioName,
+             messageContent: text,
+             prompt: prompt,  
+            }
+        })
+        prisma.$disconnect()
 
         return NextResponse.json({
-            message: "some message"
-            // audioName, result
+            audioName, result
         });
     } catch (error) {
         console.log(error)
