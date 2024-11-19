@@ -75,7 +75,6 @@ export default function Home() {
       })
 
       const arr: responseArrayProps[] = resultAxiox.data
-      console.log(resultAxiox.data)
 
       if(arr.length <= 0){
         return new Error("Our database cannot contain such a word")
