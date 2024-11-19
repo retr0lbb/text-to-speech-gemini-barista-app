@@ -12,6 +12,7 @@ export function AudioButton({audioID}: audiProps) {
 
   if(audioID.length <= 0){
     alert("No audiofile found")
+    return
   }
 
   const playAudio = async () => {
