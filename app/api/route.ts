@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { createAudioFileFromText } from "@/app/utils/get-file";
+import { createAudioFileFromText } from "@/app/api/utils/get-file";
 import { z } from "zod";
-import { prisma } from "../utils/prima-client";
+import { prisma } from "./utils/prima-client";
 
 const bodySchema = z.object({
     text: z.string(),
@@ -13,24 +13,26 @@ export async function POST(request: Request) {
         const jsonBody = await request.json();
         const { text, prompt } = bodySchema.parse(jsonBody);
 
-        const audioName = await createAudioFileFromText(text);
+        await createAudioFileFromText(text);
 
-        const result = await prisma.message.create({
-            data: {
-                messageAudioPath: audioName,
-                messageContent: text,
-                prompt: prompt,
+        // const result = await prisma.message.create({
+        //     data: {
+        //         messageAudioPath: audioName,
+        //         messageContent: text,
+        //         prompt: prompt,
                 
-            }
-        })
-        prisma.$disconnect()
+        //     }
+        // })
+        // prisma.$disconnect()
 
         return NextResponse.json({
-            audioName, result
+            message: "some message"
+            // audioName, result
         });
     } catch (error) {
+        console.log(error)
         return NextResponse.json(
-            { status: 400 } 
+            { status: 400, error } 
         );
     }
 }
